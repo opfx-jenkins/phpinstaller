@@ -1,0 +1,18 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <f:entry title="Version" field="id">
+  	<j:choose>
+  		<j:set var="sdks" value="${descriptor.installations}"/>
+  		<j:when test="${empty(sdks)}">
+  		<f:textbox/>
+  		</j:when>
+  		<j:otherwise>
+  			<select name="_.name">
+  			<j:forEach var="sdk" items="${sdks}">
+  				<f:option value="${sdk.name}">${sdk.name}</f:option>
+  			</j:forEach>
+  			</select>
+  		</j:otherwise>
+  	
+  	</j:choose>
+  </f:entry>
+</j:jelly>
